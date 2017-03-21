@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/weather-icons.css">
+    
+    <link rel="stylesheet" type="text/css" href="assets/font/weathericons-regular-webfont.svg">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<header>
+    <a href="#"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/818920/Screen%20Shot%202017-03-15%20at%2013.17.12.png" alt="logo" title="logo" /></a>
+    <div class="account">
+        <h1>Welcome: <span>Darren Smith</span></h1>
+        <h2>Log out</h2>
+    </div>
+</header>
+<body>
+    <main>
+        <div id="testing"></div>
+        <div class="container">
+            <div class="row row-centered">
+                <div class="col-sm-3 col-centered" id="weather"></div>
+                <div class="col-sm-3 col-centered"></div>
+                <div class="col-sm-3 col-centered"></div>
+            </div>
+            <div class="row row-centered">
+                <div class="col-sm-3 col-centered"></div>
+                <div class="col-sm-3 col-centered"></div>
+                <div class="col-sm-3 col-centered"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Call us</p>
+        <p>Email us</p>
+    </footer>
+    
+    <script type="text/babel">
+
+    class WeatherComponent extends React.Component {
+        
+          constructor(props) {
+            super(props);
+            this.state = {temperature: 0};
+          }
+
+          render() {
+            return (
+                <div className="forecast">
+                    <h2 className="temperature">{this.state.temperature}</h2>
+                    <i className="wi wi-forecast-io-partly-cloudy-day"></i>
+                    <h2 className="location">Richmond</h2>
+                </div>
+            );
+          }
+
+        componentDidMount() {
+ 
+              window.navigator.geolocation.getCurrentPosition(function(result) {
+                var position = result.coords;
+
+                $.ajax({
+                    dataType: "jsonp",
+                    url: 'https://api.darksky.net/forecast/648dec742889b2ef905cc950f3f92b67/' + position.latitude + ',' + position.longitude,
+                    success: function(data) {
+                        this.setState({temperature: data.currently.temperature});
+                    }.bind(this)
+                });
+
+             }.bind(this));     
+        }
+    }
+
+    ReactDOM.render(
+      <WeatherComponent />,
+      document.getElementById("weather")
+    );
+
+    </script>
+    
+    <!-- <script src="/main.js"></script> -->
+</body>
+</html>

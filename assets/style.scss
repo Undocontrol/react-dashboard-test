@@ -1,0 +1,83 @@
+$primary-color: #ffbf01;
+$primary-font: #dedede;
+$box-border: #666666;
+
+body {
+    header {
+        padding:10px;
+        min-height:200px;
+        background:$primary-color;
+
+        .account {
+            float: right;
+            h1, h2 {
+                margin:0;
+                float: left;
+                span{
+                    color:$primary-font;
+                    font-size:26px;
+                }
+            }
+            h2{
+                text-align: right;
+            }
+        }
+    }
+    main {
+        padding:10px;
+        
+        .row-centered{
+            text-align:center;      
+            .col-centered {
+                min-height:200px;
+                background:$primary-font;
+                border:2px solid $box-border;
+                margin: 10px;
+                float:none;
+                text-align:left;
+
+                .forecast {
+                    padding-top: 35px;
+                    .wi {
+                        font-size: 100px;
+                        float:left;
+                    }
+
+                    .temperature {
+                        font-size: 45px;
+                        float:left;
+                    }
+
+                    .location{
+                        float:left;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        background:$primary-color;
+        min-height:100px;
+        font-weight:bold;
+        padding:20px;
+    }
+    
+    @media only screen and (min-width: 768px) {
+        header {
+            min-height: 130px;
+            .account {
+                h1,h2 {
+                    margin:0;
+                    float:none;
+                    padding-bottom:10px;
+                }
+            }
+        }
+        main{
+            .col-centered {
+                display:inline-block;
+            }
+        }
+    }
+}
+

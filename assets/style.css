@@ -1,0 +1,51 @@
+body header {
+  padding: 10px;
+  min-height: 200px;
+  background: #ffbf01; }
+  body header .account {
+    float: right; }
+    body header .account h1, body header .account h2 {
+      margin: 0;
+      float: left; }
+      body header .account h1 span, body header .account h2 span {
+        color: #dedede;
+        font-size: 26px; }
+    body header .account h2 {
+      text-align: right; }
+body main {
+  padding: 10px; }
+  body main .row-centered {
+    text-align: center; }
+    body main .row-centered .col-centered {
+      min-height: 200px;
+      background: #dedede;
+      border: 2px solid #666666;
+      margin: 10px;
+      float: none;
+      text-align: left; }
+      body main .row-centered .col-centered .forecast {
+        padding-top: 35px; }
+        body main .row-centered .col-centered .forecast .wi {
+          font-size: 100px;
+          float: left; }
+        body main .row-centered .col-centered .forecast .temperature {
+          font-size: 45px;
+          float: left; }
+        body main .row-centered .col-centered .forecast .location {
+          float: left; }
+body footer {
+  background: #ffbf01;
+  min-height: 100px;
+  font-weight: bold;
+  padding: 20px; }
+@media only screen and (min-width: 768px) {
+  body header {
+    min-height: 130px; }
+    body header .account h1, body header .account h2 {
+      margin: 0;
+      float: none;
+      padding-bottom: 10px; }
+  body main .col-centered {
+    display: inline-block; } }
+
+/*# sourceMappingURL=style.css.map */
